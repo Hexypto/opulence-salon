@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opulence Luxury Unisex Salon | Satya The Hive Mall Sector 102 Gurgaon</title>
+    <meta name="description" content="Experience high-fashion grooming at Opulence Luxury Unisex Salon, Satya The Hive Mall, Sector 102, Gurgaon. Professional Balayage, advanced skin treatments, and royal bridal makeup.">
+    <meta name="keywords" content="luxury salon gurgaon, opulence salon sector 102, bridal makeup gurgaon, hair coloring hive mall, best salon gurgaon, neha aneja salon">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        /* Editorial Hero Specific Styling */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 48vw;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-img-faded {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.8) contrast(1.05);
+            -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--color-bg-deep) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-text-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text-content h1 {
+            font-size: clamp(3.2rem, 7vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text-content h1 span {
+            display: block;
+            font-family: var(--font-subheading);
+            font-style: italic;
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            color: var(--color-primary);
+            text-transform: none;
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+        }
+
+        .hero-text-content p {
+            font-size: 1.25rem;
+            max-width: 580px;
+            margin-bottom: 3rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Bordered Trust Row */
+        .editorial-trust-strip {
+            border-bottom: 1px solid var(--color-border);
+            background-color: var(--color-bg-card);
+            padding: 4rem 0;
+        }
+
+        .trust-col {
+            border-right: 1px solid var(--color-border);
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .trust-col:last-child {
+            border-right: none;
+        }
+
+        .trust-col h3 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .trust-col p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-family: var(--font-body);
+        }
+
+        @media (max-width: 991px) {
+            .trust-col {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+                padding: 1.5rem 0;
+            }
+            .trust-col:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 60px 0;
+            }
+            .hero-image-container {
+                width: 100vw;
+                opacity: 0.28;
+            }
+            .hero-image-container::after {
+                background: linear-gradient(to top, var(--color-bg-deep) 20%, transparent 100%);
+            }
+            .hero-text-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            .hero-text-content .eyebrow {
+                text-align: center !important;
+            }
+            .hero-text-content div {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Editorial Hero Section -->
+    <section class="hero-section">
+        <div class="hero-watermark">OPULENCE</div>
+        
+        <!-- Faded Right Side Image Container -->
+        <div class="hero-image-container reveal-right">
+            <img src="images/stylist-work.png" alt="Creative Stylist Designing Hair at Opulence Salon" class="hero-img-faded">
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-text-content reveal">
+                <span class="eyebrow" style="text-align: left;">BY NEHA ANEJA · UNISEX LUXURY SALON</span>
+                <h1>Opulence<span>Luxury Unisex Salon</span></h1>
+                <p>Gurgaon's flagship unisex sanctuary for high-fashion hair couture, custom bridal makeover artistry, and advanced skin therapy rituals.</p>
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <button class="btn btn-gold-solid open-booking-btn">Book Experience</button>
+                    <a href="services.html" class="btn btn-outline">Explore Menus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bordered Trust strip -->
+    <section class="editorial-trust-strip">
+        <div class="container">
+            <div class="grid-4" style="gap: 0;">
+                <div class="trust-col reveal">
+                    <h3>4.8 ★</h3>
+                    <p>Google Rating</p>
+                </div>
+                <div class="trust-col reveal delay-1">
+                    <h3>1,200+</h3>
+                    <p>Verified Reviews</p>
+                </div>
+                <div class="trust-col reveal delay-2">
+                    <h3>15+</h3>
+                    <p>Master Stylists</p>
+                </div>
+                <div class="trust-col reveal delay-3">
+                    <h3>5,000+</h3>
+                    <p>Loyal Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hover-Reveal Editorial Services List -->
+    <section class="section-padding" style="position: relative;">
+        <div class="container">
+            <span class="eyebrow text-center">Exquisite Offerings</span>
+            <h2 class="reveal">Couture Services</h2>
+            
+            <div class="hover-menu-container reveal">
+                <!-- Hover Preview Image Box (manipulated by JS) -->
+                <div class="hover-menu-preview" id="hover-preview"></div>
+                
+                <!-- Hair Couture -->
+                <div class="hover-menu-row" data-image="images/hair-styling.png">
+                    <span class="hover-menu-num">01</span>
+                    <a href="services.html#hair" class="hover-menu-title">Hair Couture</a>
+                    <span class="hover-menu-desc">Bespoke cuts, L'Oréal French Balayage, Amazon Keratin smoothing, and Kérastase deep nourishment spas.</span>
+                </div>
+                
+                <!-- Skincare -->
+                <div class="hover-menu-row" data-image="images/skincare-service.png">
+                    <span class="hover-menu-num">02</span>
+                    <a href="services.html#skin" class="hover-menu-title">Advanced Skincare</a>
+                    <span class="hover-menu-desc">Rejuvenating O2 Derm oxygen facials, clinical Hydra-dermabrasion, and vitamin peeling infusions.</span>
+                </div>
+                
+                <!-- Bridal -->
+                <div class="hover-menu-row" data-image="images/bridal-service.png">
+                    <span class="hover-menu-num">03</span>
+                    <a href="bridal.html" class="hover-menu-title">Bridal Makeover Studio</a>
+                    <span class="hover-menu-desc">Royal HD wedding makeups, airbrush contouring, Dupatta styling, and custom pre-wedding rituals.</span>
+                </div>
+                
+                <!-- Nails -->
+                <div class="hover-menu-row" data-image="images/nail-station.png">
+                    <span class="hover-menu-num">04</span>
+                    <a href="services.html#nails" class="hover-menu-title">Nail Artistry</a>
+                    <span class="hover-menu-desc">Flawless acrylic extensions, hand-painted gel polish arts, and organic milk and rose petal pedicures.</span>
+                </div>
+                
+                <!-- Men's Grooming -->
+                <div class="hover-menu-row" data-image="images/team.png">
+                    <span class="hover-menu-num">05</span>
+                    <a href="services.html#grooming" class="hover-menu-title">Gentlemen's Grooming</a>
+                    <span class="hover-menu-desc">Precision beard sculpture, designer styling, hair spas, and warm charcoal shaves.</span>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 4rem;">
+                <button class="btn btn-primary open-booking-btn">Book Appointment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambiance Highlight Section -->
+    <section class="section-padding" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="grid-2">
+                <div class="reveal-left">
+                    <div style="border: 1px solid var(--color-border); padding: 10px; background-color: var(--color-bg-deep);">
+                        <img src="images/salon-interior.png" alt="Opulence Luxury Unisex Salon Interiors Satya Hive Gurgaon" style="width: 100%; display:block; height:500px; object-fit:cover;">
+                    </div>
+                </div>
+                <div class="flex-center reveal-right">
+                    <div style="padding-left: 2rem;">
+                        <span class="eyebrow" style="text-align: left;">The Atmosphere</span>
+                        <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem; line-height: 1.2;">Uncompromised Wellness</h3>
+                        <p style="margin-bottom: 1.5rem;">Located inside Gurgaon's modern Satya The Hive Mall, our flagships feature individual styling bays, quiet treatment rooms, and advanced sterilization equipment. Relax while enjoying complimentary gourmet coffees, iced organic matchas, or herbal infusions.</p>
+                        <p style="margin-bottom: 2.5rem;">Led by chief director Amit Aneja and Neha Aneja, our council of hair designers and dermatological therapists ensure standard compliance comparable to premium hubs in Beverly Hills, Dubai, and South Delhi.</p>
+                        <a href="about.html" class="btn btn-primary">Discover Our Identity</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Beauty Finder Teaser -->
+    <section class="section-padding text-center">
+        <div class="container">
+            <div style="border: 1px solid var(--color-primary); padding: 4.5rem 2rem; position:relative; overflow:hidden;" class="reveal">
+                <div class="hero-watermark" style="font-size: 10vw; opacity:0.02;">BEAUTY</div>
+                <span class="eyebrow">Interactive Consultation</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; padding-bottom: 0;">Unveil Your Custom Care</h2>
+                <p style="max-width: 600px; margin: 0 auto 3rem auto;">Take our 1-minute Service Finder Quiz to map your skin profile, hair condition, and schedule to receive optimized styling recommendations.</p>
+                <a href="services.html?quiz=open" class="btn btn-gold-solid">Start Beauty Quiz</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="section-padding" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="eyebrow text-center">Got Questions?</span>
+            <h2 class="reveal">Frequently Asked Questions</h2>
+            
+            <div class="faq-container reveal">
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I book an appointment?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply click the "Book Experience" or "Book Appointment" buttons throughout our site. You will be redirected immediately to our WhatsApp booking chat (+91 98116 30659), where our concierge will coordinate dates, stylists, and categories with you instantly.</p>
+                    </div>
+                </div>
+                
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What luxury brands do you use?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We believe in high-fashion results without compromising hair and skin integrity. We exclusively use authentic international products, including L'Oréal Professionnel, Kérastase Paris, Balmain Hair Couture, Olaplex, Huda Beauty, MAC cosmetics, and premium organic skin serums.</p>
+                    </div>
+                </div>
+                
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer bridal makeup trials?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we do. Our Chief Bridal Artist Neha Aneja offers dedicated pre-wedding bridal makeup trials. This ensures alignment on style preferences (Dewy, HD, Airbrush, or Royal Traditional), heavy draping, and hair sculpting before the sacred wedding day.</p>
+                    </div>
+                </div>
+                
+                <!-- Q4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are your operating hours and branches?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our flagship Gurgaon branches have the following schedules:<br>
+                        - <strong>Satya The Hive Mall (Sector 102):</strong> G-83, Ground Floor. Open 10:00 AM – 9:00 PM daily.<br>
+                        - <strong>Sector 109 Branch:</strong> Plot No. 16. Open 10:30 AM – 9:00 PM daily.</p>
+                    </div>
+                </div>
+                
+                <!-- Q5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do Opulence Memberships work?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our elite Silver, Gold, and Platinum Club memberships offer upfront credits (e.g. paying ₹30,000 gives you ₹38,000 in services value) along with structural benefits like up to 20% off retail cosmetics, free monthly cleanups, and priority booking slots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container (kept for backward compatibility, form submits WhatsApp) -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Home specific interactions (Hover Reveal Category menu) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('.hover-menu-row');
+            const preview = document.getElementById('hover-preview');
+            
+            if (rows.length > 0 && preview) {
+                rows.forEach(row => {
+                    row.addEventListener('mouseenter', () => {
+                        const imgPath = row.getAttribute('data-image');
+                        if (imgPath) {
+                            preview.style.backgroundImage = `url('${imgPath}')`;
+                            preview.classList.add('active');
+                        }
+                    });
+                    
+                    row.addEventListener('mouseleave', () => {
+                        preview.classList.remove('active');
+                    });
+                    
+                    // Smooth tracking
+                    row.addEventListener('mousemove', (e) => {
+                        const rect = row.getBoundingClientRect();
+                        const relativeY = e.clientY - rect.top;
+                        // Center slightly around row
+                        preview.style.top = `${e.clientY - 120}px`;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exquisite Work Gallery Portfolio | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="Browse our luxury gallery featuring premium hair transformations, nail art designs, bridal makeovers, and upscale salon interiors at Sector 102 Gurgaon.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        .gallery-banner {
+            padding: 120px 0 60px 0;
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .gallery-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Filter Tab Styles */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 3rem 0;
+        }
+
+        .filter-btn {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            padding: 0.6rem 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition-quick);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background-color: rgba(197, 160, 89, 0.05);
+        }
+
+        /* Pinterest Masonry Grid */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .masonry-item {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 20px;
+            break-inside: avoid;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 8, 8, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition-quick);
+            z-index: 2;
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-overlay-info {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .masonry-overlay-info span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .masonry-overlay-info h4 {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Lightbox modal */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 85%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: var(--color-text-light);
+            font-size: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Banner -->
+    <section class="gallery-banner">
+        <div class="container">
+            <span class="eyebrow">Visual Indulgences</span>
+            <h1>Our Portfolios & Transformation</h1>
+            <p>A window into the high-fashion aesthetics crafted at our Gurgaon salons.</p>
+        </div>
+    </section>
+
+    <!-- Filter & Grid -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            
+            <div class="filter-tabs reveal">
+                <button class="filter-btn active" data-filter="all">All Portfolio</button>
+                <button class="filter-btn" data-filter="interiors">Salon Interiors</button>
+                <button class="filter-btn" data-filter="hair">Hair Couture</button>
+                <button class="filter-btn" data-filter="bridal">Bridal Studio</button>
+                <button class="filter-btn" data-filter="nails">Nail Artistry</button>
+            </div>
+
+            <div class="masonry-grid reveal">
+                
+                <!-- Interiors -->
+                <div class="masonry-item" data-category="interiors">
+                    <img src="images/salon-interior.png" alt="Luxury styling bay at Opulence Salon Hive Mall">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Salon Interiors</span>
+                            <h4>Satya Hive Mall Bay</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nails -->
+                <div class="masonry-item" data-category="nails">
+                    <img src="images/nail-station.png" alt="Nail Extension Desk at Opulence Salon">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Nail Artistry</span>
+                            <h4>Exquisite Extensions Station</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hair -->
+                <div class="masonry-item" data-category="hair">
+                    <img src="images/hair-styling.png" alt="Amit Aneja Designer Hair Cut Session">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Hair Couture</span>
+                            <h4>Precision Hair Sculpture</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bridal -->
+                <div class="masonry-item" data-category="bridal">
+                    <img src="images/bridal-service.png" alt="Royal HD Bridal Makeup Portrait by Neha Aneja">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Bridal Studio</span>
+                            <h4>Royal HD Bridal Makeover</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skin / Bridal -->
+                <div class="masonry-item" data-category="bridal">
+                    <img src="images/skincare-service.png" alt="Pre-Bridal Skincare glow prep">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Bridal Studio</span>
+                            <h4>Pre-Bridal Skincare Prep</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hair / Interiors -->
+                <div class="masonry-item" data-category="hair">
+                    <img src="images/stylist-work.png" alt="Stylist completing hair coloring highlight">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Hair Couture</span>
+                            <h4>Luxe Balayage Highlights</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team / Interiors -->
+                <div class="masonry-item" data-category="interiors">
+                    <img src="images/team.png" alt="Creative Stylist Council at Opulence Sector 102">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-info">
+                            <span>Salon Interiors</span>
+                            <h4>Our Gurugram Creative Council</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div class="lightbox-modal" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" id="lightbox-img" alt="Enlarged Portfolio View">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Gallery Action Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.masonry-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            // 1. Filtering Logic
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    items.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Refresh reveals observer coordinates
+                    if (window.refreshScrollReveals) window.refreshScrollReveals();
+                });
+            });
+
+            // 2. Lightbox Logic
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    if (img && lightbox && lightboxImg) {
+                        lightboxImg.src = img.src;
+                        lightbox.style.display = 'flex';
+                        setTimeout(() => {
+                            lightbox.classList.add('active');
+                        }, 50);
+                    }
+                });
+            });
+
+            const closeLightbox = () => {
+                if (lightbox) {
+                    lightbox.classList.remove('active');
+                    setTimeout(() => {
+                        lightbox.style.display = 'none';
+                    }, 400);
+                }
+            };
+
+            if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="Learn about the philosophy and mission of Opulence Luxury Unisex Salon. Established by Neha Aneja, we bring premier hair, skin, and bridal expertise to Satya The Hive Mall.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        /* About Header Banner */
+        .about-banner {
+            padding: 120px 0 60px 0;
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .about-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-banner p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: var(--font-subheading);
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        /* Core Values */
+        .value-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .value-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-image-wrapper {
+            position: relative;
+            margin-bottom: 3rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            height: 450px;
+        }
+
+        .team-group-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-overlay-card {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            background-color: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            border-radius: var(--border-radius-sm);
+        }
+
+        @media (max-width: 768px) {
+            .team-image-wrapper {
+                height: auto;
+            }
+            .team-overlay-card {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin-top: 1.5rem;
+                background-color: var(--color-bg-card);
+                padding: 1.5rem;
+            }
+            .stylist-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .stylist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stylist-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .stylist-card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .stylist-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stylist-role {
+            font-size: 0.75rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stylist-specialty {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Stats Strip */
+        .stats-section {
+            background-color: #030303;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding: 5rem 0;
+        }
+        
+        .counter-num {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Header Banner -->
+    <section class="about-banner">
+        <div class="container">
+            <span class="eyebrow">A Legacy of Sophistication</span>
+            <h1>The Opulence Narrative</h1>
+            <p>“Where individual beauty is sculpted into an exquisite form of art.”</p>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="reveal-left">
+                    <span class="eyebrow" style="text-align:left;">The Founder</span>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Neha Aneja's Vision</h3>
+                    <p style="margin-bottom: 1.2rem;">Founded in Gurgaon, Opulence Luxury Unisex Salon was born out of a desire to create a sanctuary where high-fashion grooming aligns with holistic wellness. Our founder, Neha Aneja, envisioned a brand that breaks away from formulaic beauty treatments, offering bespoke couture consulting to every client.</p>
+                    <p style="margin-bottom: 1.2rem;">Every cut, highlight, facial, and nail extension at Opulence is performed with painstaking attention to detail. We curates only top-tier international brands, ensuring our clients experience the exact standards they would receive in premium luxury spots of London, Dubai, or Beverly Hills.</p>
+                    <p>From the moment you cross our threshold at Satya The Hive Mall, you are treated to a personalized wellness mapping, complimentary gourmet teas, and elite, undivided attention.</p>
+                </div>
+                <div class="reveal-right">
+                    <div style="border: 1px solid var(--color-border); padding: 10px; border-radius: var(--border-radius-sm);">
+                        <img src="images/stylist-work.png" alt="Senior Stylist Sculpting Hair at Opulence" style="width: 100%; border-radius: var(--border-radius-sm); display:block; object-fit:cover; height:420px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item reveal">
+                    <div class="counter-num" data-target="2">0</div>
+                    <p>Bespoke Locations</p>
+                </div>
+                <div class="trust-item reveal delay-1">
+                    <div class="counter-num" data-target="15">0</div>
+                    <p>Elite Stylists</p>
+                </div>
+                <div class="trust-item reveal delay-2">
+                    <div class="counter-num" data-target="5000">0</div>
+                    <p>Happy Clientele</p>
+                </div>
+                <div class="trust-item reveal delay-3">
+                    <div class="counter-num" data-target="8">0</div>
+                    <p>Years of Artistry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section-padding">
+        <div class="container">
+            <span class="eyebrow text-center">Our Pillars</span>
+            <h2 class="reveal">The Philosophy</h2>
+            <div class="grid-3">
+                <div class="value-card reveal">
+                    <div class="value-icon">✦</div>
+                    <h3>Exclusivity</h3>
+                    <p>We believe in custom booking schedules that respect your time. Enjoy styling bays and quiet treatments with absolute privacy.</p>
+                </div>
+                <div class="value-card reveal delay-1">
+                    <div class="value-icon">⚜</div>
+                    <h3>Artistry</h3>
+                    <p>Our senior hairdressers and aesthetic experts undergo continuous international training, treating cosmetology as an elegant craft.</p>
+                </div>
+                <div class="value-card reveal delay-2">
+                    <div class="value-icon">♛</div>
+                    <h3>Integrity</h3>
+                    <p>Only authentic products are ever used on your hair and skin. We maintain medical-grade sterilization for nail, skin, and hair tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Team Section -->
+    <section class="section-padding" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="eyebrow text-center">Meet the Artisans</span>
+            <h2 class="reveal">Master Stylists & Therapists</h2>
+            
+            <div class="team-image-wrapper reveal">
+                <img src="images/team.png" alt="Opulence Luxury Unisex Salon Team Gurgaon" class="team-group-img">
+                <div class="team-overlay-card">
+                    <h3 style="margin-bottom: 0.5rem; color:var(--color-primary);">The Opulence Creative Council</h3>
+                    <p style="font-size:0.9rem; color:var(--color-text-light);">Led by founder Neha Aneja, our specialists hold certifications from prestigious global academies, specialized in high-fashion coloring, complex chemical textures, nail sculpture, and advanced dermatological aesthetics.</p>
+                </div>
+            </div>
+
+            <div class="stylist-grid">
+                <div class="stylist-card reveal">
+                    <div class="stylist-info">
+                        <div class="stylist-role">Creative Hair Director</div>
+                        <h3>Amit Aneja</h3>
+                        <p class="stylist-specialty">Specialist in Balayage, Highlights, and precision cuts. 12+ years expertise.</p>
+                    </div>
+                </div>
+                <div class="stylist-card reveal delay-1">
+                    <div class="stylist-info">
+                        <div class="stylist-role">Chief Bridal Artist</div>
+                        <h3>Neha Aneja</h3>
+                        <p class="stylist-specialty">Expert in Royal HD Makeups, airbrush styles, and wedding styling.</p>
+                    </div>
+                </div>
+                <div class="stylist-card reveal delay-2">
+                    <div class="stylist-info">
+                        <div class="stylist-role">Senior Aesthetician</div>
+                        <h3>Simran Kaur</h3>
+                        <p class="stylist-specialty">Expert in advanced facials, chemical peels, and glowing skincare treatments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding text-center">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">Indulge Today</span>
+                <h2 style="margin-bottom: 2rem;">Ready for an Unparalleled Experience?</h2>
+                <button class="btn btn-gold-solid open-booking-btn">Reserve Your Spot</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Counter Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter-num');
+            
+            const startCounter = (el) => {
+                const target = parseInt(el.getAttribute('data-target'));
+                let count = 0;
+                const speed = target / 50; // increment rate
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        el.innerText = Math.floor(count) + (target > 1000 ? '+' : '+');
+                        setTimeout(updateCount, 25);
+                    } else {
+                        el.innerText = target + '+';
+                    }
+                };
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        });
+    </script>
+</body>
+</html>
+
+

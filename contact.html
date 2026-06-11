@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="Contact Opulence Luxury Unisex Salon at Satya The Hive Mall Sector 102, Gurgaon. Find opening hours, branch phone numbers, map directions, and book appointments.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        .contact-banner {
+            padding: 120px 0 60px 0;
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .contact-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Detail Blocks styling */
+        .contact-info-block {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-block h3 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-info-block p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .contact-info-block a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Map styling */
+        .map-section {
+            width: 100%;
+            height: 450px;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0.9) invert(0.9) contrast(1.2); /* Luxury dark theme map effect */
+        }
+        
+        [data-theme="light"] .map-section iframe {
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Banner -->
+    <section class="contact-banner">
+        <div class="container">
+            <span class="eyebrow">Connect & Indulge</span>
+            <h1>Locate Us & Reservation</h1>
+            <p>Schedule your session at our premium Satya The Hive Mall or Sector 109 branch.</p>
+        </div>
+    </section>
+
+    <!-- Contact details & Reservation Form split -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="grid-2">
+                <!-- Info column -->
+                <div class="reveal-left">
+                    <span class="eyebrow" style="text-align: left;">Direct Channels</span>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 2rem;">Locations & Contacts</h3>
+                    
+                    <!-- Branch 1 (Primary) -->
+                    <div class="contact-info-block">
+                        <h3>Satya The Hive Mall (Flagship)</h3>
+                        <p><strong>Address:</strong> Shop No. G-83, Ground Floor, Satya The Hive Mall, Sector 102, Gurugram, Haryana - 122006</p>
+                        <p><strong>Phone:</strong> <a href="tel:+919811630659">+91 98116 30659</a> / <a href="tel:+919988668335">+91 99886 68335</a></p>
+                        <p><strong>Hours:</strong> 10:00 AM – 9:00 PM (Everyday)</p>
+                        <p style="margin-top: 1.2rem;"><a href="https://maps.google.com/?q=Opulence+Luxury+Salon+Satya+The+Hive" target="_blank" class="btn btn-outline" style="font-size:0.75rem; padding: 0.5rem 1rem;">Get Directions</a></p>
+                    </div>
+
+                    <!-- Branch 2 -->
+                    <div class="contact-info-block">
+                        <h3>Sector 109 Branch</h3>
+                        <p><strong>Address:</strong> Plot No. 16, Sector 109, Gurugram, Haryana - 122017</p>
+                        <p><strong>Phone:</strong> <a href="tel:+919811630659">+91 98116 30659</a></p>
+                        <p><strong>Hours:</strong> 10:30 AM – 9:00 PM (Everyday)</p>
+                    </div>
+
+                    <!-- Email & General inquiries -->
+                    <div class="contact-info-block">
+                        <h3>General Inquiries</h3>
+                        <p><strong>Email:</strong> <a href="mailto:opulenceluxurysalon@gmail.com">opulenceluxurysalon@gmail.com</a></p>
+                        <p><strong>Corporate:</strong> For wedding event makeups outside Gurgaon, shoot us an email or submit the Bridal consultation form.</p>
+                    </div>
+                </div>
+
+                <!-- Form column -->
+                <div class="reveal-right">
+                    <div style="background-color: var(--color-bg-card); border: 1px solid var(--color-border); padding: 3rem; border-radius: var(--border-radius-md);">
+                        <span class="eyebrow">Luxury Booking</span>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 2rem;">Secure Your Booking</h3>
+                        
+                        <form id="contact-page-booking-form">
+                            <div class="form-group">
+                                <label for="c-name">Full Name</label>
+                                <input type="text" id="c-name" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-phone">Phone Number</label>
+                                <input type="tel" id="c-phone" class="form-control" placeholder="Your phone number" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="c-branch">Select Branch</label>
+                                    <select id="c-branch" class="form-control" required>
+                                        <option value="Satya The Hive Mall, Sector 102">Satya The Hive Mall, Sector 102</option>
+                                        <option value="Sector 109, Gurgaon">Sector 109, Gurgaon</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="c-service">Service Category</label>
+                                    <select id="c-service" class="form-control" required>
+                                        <option value="Hair Couture">Hair Couture</option>
+                                        <option value="Advanced Skincare">Advanced Skincare</option>
+                                        <option value="Bridal Luxe Makeover">Bridal Luxe Makeover</option>
+                                        <option value="Nail Artistry">Nail Artistry</option>
+                                        <option value="Gentlemen's Grooming">Gentlemen's Grooming</option>
+                                        <option value="Luxury Packages">Luxury Membership/Packages</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="c-date">Preferred Date</label>
+                                    <input type="date" id="c-date" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="c-time">Preferred Time</label>
+                                    <select id="c-time" class="form-control" required>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="11:30 AM">11:30 AM</option>
+                                        <option value="01:00 PM">01:00 PM</option>
+                                        <option value="02:30 PM">02:30 PM</option>
+                                        <option value="04:00 PM">04:00 PM</option>
+                                        <option value="05:30 PM">05:30 PM</option>
+                                        <option value="07:00 PM">07:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-message">Special Preferences</label>
+                                <textarea id="c-message" class="form-control" rows="3" placeholder="Gourmet tea preferences, hair length details, skin sensivity concerns, etc..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-gold-solid" style="width: 100%;">Confirm Reservation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Embed -->
+    <section class="map-section reveal">
+        <!-- Satya The Hive Mall Sector 102 Coordinates targeting -->
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.7416347913366!2d76.96164591507923!3d28.471789398734032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d16cf29df273f%3A0xebe7ffbe934c9ca4!2sSatya%20The%20Hive!5e0!3m2!1sen!2sin!4v1654763004381!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Google Maps satellite showing Satya The Hive Gurgaon location">
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Contact Specific Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set date boundaries
+            const dateInput = document.getElementById('c-date');
+            if (dateInput) {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.min = today.toISOString().split('T')[0];
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+
+            // Pre-fill fields if subject equals voucher
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('subject') === 'voucher') {
+                const serviceSelect = document.getElementById('c-service');
+                if (serviceSelect) serviceSelect.value = 'Luxury Packages';
+                const msgField = document.getElementById('c-message');
+                if (msgField) msgField.value = "Inquiry: Purchasing luxury gift voucher credits.";
+            }
+
+            // Page form submission logic
+            const bookingForm = document.getElementById('contact-page-booking-form');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('c-name').value;
+                    const phone = document.getElementById('c-phone').value;
+                    const branch = document.getElementById('c-branch').value;
+                    const service = document.getElementById('c-service').value;
+                    const date = document.getElementById('c-date').value;
+                    const time = document.getElementById('c-time').value;
+                    const message = document.getElementById('c-message').value;
+
+                    const baseText = `Hello Opulence Luxury Unisex Salon! I would like to book a luxury session.
+                    
+*Details:*
+- *Name:* ${name}
+- *Phone:* ${phone}
+- *Branch:* ${branch}
+- *Service:* ${service}
+- *Date:* ${date}
+- *Time:* ${time}
+- *Special Instructions:* ${message || 'None'}`;
+
+                    const encodedText = encodeURIComponent(baseText);
+                    const waUrl = `https://wa.me/919811630659?text=${encodedText}`;
+                    
+                    alert('Thank you! Redirecting to WhatsApp to finalize your luxury reservation details.');
+                    window.open(waUrl, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

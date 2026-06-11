@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Services Menu & Beauty Finder | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="View the premium services menu at Opulence Luxury Unisex Salon, Gurgaon. Check prices and details for haircuts, Balayage hair coloring, Keratin treatment, and Hydrafacials.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        .services-banner {
+            padding: 120px 0 60px 0;
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .services-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Quiz UI Layout */
+        .quiz-wrapper {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-primary);
+            border-radius: var(--border-radius-md);
+            padding: 3.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+            position: relative;
+        }
+
+        .quiz-control-btn {
+            background: transparent;
+            border: none;
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .result-box {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            background-color: rgba(255, 255, 255, 0.01);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 2rem;
+        }
+
+        /* Category sections */
+        .menu-category-section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px dashed rgba(197, 160, 89, 0.2);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .menu-item-info h4 {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-info p {
+            font-size: 0.85rem;
+            max-width: 400px;
+        }
+
+        .menu-item-price {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .menu-item-duration {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Membership Tier cards */
+        .tier-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .tier-card.featured {
+            border-color: var(--color-primary);
+            background: linear-gradient(180deg, #141414 0%, #080808 100%);
+        }
+
+        .tier-card.featured::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.7rem;
+            color: var(--color-bg-deep);
+            background-color: var(--color-primary);
+            padding: 4px 10px;
+            letter-spacing: 0.1em;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .tier-price {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            margin: 1.5rem 0;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .tier-features li {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tier-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 900px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .quiz-wrapper {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Banner -->
+    <section class="services-banner">
+        <div class="container">
+            <span class="eyebrow">Luxury Treatment Menu</span>
+            <h1>Bespoke Grooming & Therapy</h1>
+            <p>Select from our customized treatments or try our interactive beauty finder.</p>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="section-padding" id="quiz-section">
+        <div class="container">
+            <div class="quiz-wrapper reveal">
+                <!-- Quiz Intro State -->
+                <div id="quiz-intro" class="text-center">
+                    <span class="eyebrow">Personalized Skincare & Styling</span>
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">The Service Finder Quiz</h3>
+                    <p style="margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Answer 3 questions to discover the ideal hair spa, coloring technique, or face facial that matches your skin/hair type and schedule constraints.</p>
+                    <button class="btn btn-gold-solid" id="start-quiz-btn">Begin Beauty Consultation</button>
+                </div>
+
+                <!-- Quiz Card (Interactive questions) -->
+                <div id="quiz-card" style="display: none;">
+                    <button class="quiz-control-btn" id="quiz-back-btn">← Back</button>
+                    <h3 id="quiz-question-title" style="margin-bottom: 2rem; font-size: 1.4rem;">Question Title</h3>
+                    <div id="quiz-options-container">
+                        <!-- JS dynamic options -->
+                    </div>
+                </div>
+
+                <!-- Quiz Result State -->
+                <div id="quiz-result" style="display: none;" class="text-center">
+                    <span class="eyebrow">Your Recommended Ritual</span>
+                    <h3 id="result-title" style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--color-primary);">Recommended Treatment</h3>
+                    
+                    <div class="result-box text-left">
+                        <p style="margin-bottom: 1rem;"><strong style="color:var(--color-text-light);">Description:</strong> <span id="result-desc">Description of treatment...</span></p>
+                        <p><strong style="color:var(--color-text-light);">Key Benefits:</strong> <span id="result-benefits">Benefits...</span></p>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-gold-solid" id="quiz-book-btn">Pre-fill Reservation</button>
+                        <button class="btn btn-outline" id="quiz-restart-btn">Restart Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hair Section -->
+    <section class="section-padding menu-category-section" id="hair" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="eyebrow">Elite Styling & Coloring</span>
+            <h2 class="reveal" style="text-align: left; margin-bottom: 3.5rem;">Hair Couture</h2>
+            
+            <div class="menu-grid">
+                <div class="reveal-left">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Signature Haircut by Creative Director</h4>
+                            <p>A designer wash, structural cut, and premium blowout styled by senior staff.</p>
+                            <span class="menu-item-duration">60 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹1,500 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>French Balayage Couture</h4>
+                            <p>Hand-painted sun-kissed lighting customized to your hair texture.</p>
+                            <span class="menu-item-duration">180 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹8,500 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Global Hair Color (L'Oréal/Schwarzkopf)</h4>
+                            <p>Rich, uniform single shade coloring with high ammonia-free shine.</p>
+                            <span class="menu-item-duration">120 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹4,500 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                </div>
+                
+                <div class="reveal-right">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Kérastase Chronologiste Caviar Spa</h4>
+                            <p>The ultimate youth-restoring scalp treatment with active carbon & caviar beads.</p>
+                            <span class="menu-item-duration">90 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹3,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Cysteine Smoothening Treatment</h4>
+                            <p>Natural protein smoothing to rebuild fibers, eliminate volume and frizz.</p>
+                            <span class="menu-item-duration">150 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹7,000 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Amazon Keratin Treatment</h4>
+                            <p>Formaldehyde-free intensive treatment providing ultimate silky texture.</p>
+                            <span class="menu-item-duration">150 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹6,000 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <button class="btn btn-primary open-booking-btn">Book Hair Session</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Section -->
+    <section class="section-padding menu-category-section" id="skin">
+        <div class="container">
+            <span class="eyebrow">Dermatological Glow</span>
+            <h2 class="reveal" style="text-align: left; margin-bottom: 3.5rem;">Advanced Skincare</h2>
+            
+            <div class="menu-grid">
+                <div class="reveal-left">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>O2 Derm Oxygen Radiance Facial</h4>
+                            <p>Pure hyperbaric oxygen misting paired with customized vitamins.</p>
+                            <span class="menu-item-duration">75 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹4,000</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Luxe Collagen Firming Facial</h4>
+                            <p>Marine collagen infusion with lifting micro-massages.</p>
+                            <span class="menu-item-duration">90 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹5,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Deep Detoxing Charcoal Cleanup</h4>
+                            <p>Steam extraction, scrubbing, and organic clay detox mask.</p>
+                            <span class="menu-item-duration">45 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹2,000</div>
+                    </div>
+                </div>
+                
+                <div class="reveal-right">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Clinical Hydra-Dermabrasion Facial</h4>
+                            <p>Exfoliation, chemical extraction peel, and deep peptide serum infusion.</p>
+                            <span class="menu-item-duration">90 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹6,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Brightening Kojic & Vitamin C Peel</h4>
+                            <p>Targeted spots reduction, pigmentation therapy, and melanin regulation.</p>
+                            <span class="menu-item-duration">60 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹4,500</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <button class="btn btn-primary open-booking-btn">Book Skincare Session</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nails & Grooming Section -->
+    <section class="section-padding menu-category-section" id="nails" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="eyebrow">Artistic Fingertips & Grooming</span>
+            <h2 class="reveal" style="text-align: left; margin-bottom: 3.5rem;">Nails & Grooming</h2>
+            
+            <div class="menu-grid">
+                <div class="reveal-left">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Gel Nail Extensions (Full Set)</h4>
+                            <p>Perfect tip sculpting with premium crystal clear building gel.</p>
+                            <span class="menu-item-duration">120 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹2,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Premium Gel Polish & Chrome Art</h4>
+                            <p>Long lasting base coats with metallic, glitter, or custom hand arts.</p>
+                            <span class="menu-item-duration">60 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹1,500 <span style="font-size: 0.8rem; color:var(--color-text-muted);">onwards</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Organic Rose Petal Spa Pedicure</h4>
+                            <p>Exfoliating salt scrub, warm milk bath, clay mask and massage.</p>
+                            <span class="menu-item-duration">75 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹1,800</div>
+                    </div>
+                </div>
+                
+                <div class="reveal-right">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Full Body Rica Waxing (Chocolate)</h4>
+                            <p>Less painful organic liposoluble wax that delays hair growth.</p>
+                            <span class="menu-item-duration">120 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹3,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Organic Eyebrow & Upper Lip Threading</h4>
+                            <p>Gentle cotton threading shaping by experienced professionals.</p>
+                            <span class="menu-item-duration">20 mins</span>
+                        </div>
+                        <div class="menu-item-price">₹250</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <button class="btn btn-primary open-booking-btn">Book Grooming Session</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership section -->
+    <section class="section-padding" id="membership">
+        <div class="container">
+            <span class="eyebrow text-center">Elite Loyalty Tiers</span>
+            <h2 class="reveal">Opulence Membership Tiers</h2>
+            
+            <div class="grid-3">
+                <div class="tier-card reveal">
+                    <span class="eyebrow">Silver Tier</span>
+                    <h3>Opulence Silver</h3>
+                    <div class="tier-price">₹15,000</div>
+                    <ul class="tier-features">
+                        <li>Enjoy ₹18,000 service value credit</li>
+                        <li>10% discount on all retail products</li>
+                        <li>Priority booking window</li>
+                        <li>Validity: 12 months</li>
+                    </ul>
+                    <button class="btn btn-outline open-booking-btn" style="width: 100%;">Join Silver Club</button>
+                </div>
+                
+                <div class="tier-card featured reveal delay-1">
+                    <span class="eyebrow">Gold Tier</span>
+                    <h3>Opulence Gold</h3>
+                    <div class="tier-price">₹30,000</div>
+                    <ul class="tier-features">
+                        <li>Enjoy ₹38,000 service value credit</li>
+                        <li>15% discount on all retail products</li>
+                        <li>Free monthly custom hair styling session</li>
+                        <li>Priority booking window</li>
+                        <li>Validity: 12 months</li>
+                    </ul>
+                    <button class="btn btn-gold-solid open-booking-btn" style="width: 100%;">Join Gold Club</button>
+                </div>
+                
+                <div class="tier-card reveal delay-2">
+                    <span class="eyebrow">Platinum Tier</span>
+                    <h3>Opulence Platinum</h3>
+                    <div class="tier-price">₹50,000</div>
+                    <ul class="tier-features">
+                        <li>Enjoy ₹65,000 service value credit</li>
+                        <li>20% discount on all retail products</li>
+                        <li>Free monthly deep hydration cleanup</li>
+                        <li>VIP Private Styling Bay access</li>
+                        <li>Validity: 18 months</li>
+                    </ul>
+                    <button class="btn btn-outline open-booking-btn" style="width: 100%;">Join Platinum Club</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
+
+

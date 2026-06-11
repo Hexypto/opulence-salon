@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridal Studio & Makeovers | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="Enter the premium bridal studio at Opulence Luxury Unisex Salon. Explore royal HD bridal makeup, pre-wedding skin therapy, and customized engagement packages.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        .bridal-hero {
+            padding: 140px 0 60px 0;
+            background: linear-gradient(rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.9)), url('images/bridal-service.png') no-repeat center center;
+            background-size: cover;
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .bridal-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .bridal-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-accent);
+            font-family: var(--font-subheading);
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        /* Bridal Package Cards */
+        .bridal-pkg-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            padding: 3rem;
+            transition: var(--transition-smooth);
+        }
+
+        .bridal-pkg-card:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-bg-card-hover);
+        }
+
+        .bridal-pkg-price {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .bridal-pkg-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .bridal-pkg-features li {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 20px;
+            color: var(--color-text-muted);
+        }
+
+        .bridal-pkg-features li::before {
+            content: '✧';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        /* Before/After Overlay Labels */
+        .slider-label {
+            position: absolute;
+            bottom: 20px;
+            background-color: rgba(8, 8, 8, 0.75);
+            padding: 5px 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            border: 1px solid var(--color-border);
+            border-radius: 2px;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .label-before {
+            left: 20px;
+        }
+
+        .label-after {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Bridal Hero -->
+    <section class="bridal-hero">
+        <div class="container">
+            <span class="eyebrow">The Royal Bridal Studio</span>
+            <h1>Elegance for Your Sacred Day</h1>
+            <p>“Where timless elegance meets couture bridal makeup artistry.”</p>
+        </div>
+    </section>
+
+    <!-- Before & After Transformation Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="reveal-left">
+                    <span class="eyebrow" style="text-align:left;">The Transformation</span>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Unveil Flawless Beauty</h3>
+                    <p style="margin-bottom: 1.2rem;">Our makeup director Neha Aneja excels at creating look portfolios that complement your dress color, facial shape, and lighting parameters of your venue. Using premium airbrush techniques and HD pigments, we create makeups that stay flawless for 16+ hours.</p>
+                    <p style="margin-bottom: 2rem;">Use the interactive slider to view the transformation from a natural bare skin regime to our final Signature Royal Bridal Makeover styling.</p>
+                    <button class="btn btn-gold-solid open-booking-btn">Book Bridal Trial</button>
+                </div>
+                
+                <div class="reveal-right">
+                    <!-- Before/After Slider Container -->
+                    <div class="before-after-container" id="ba-slider">
+                        <!-- Before State (Skincare) -->
+                        <div class="before-after-img img-before" style="background-image: url('images/skincare-service.png');"></div>
+                        <span class="slider-label label-before">Natural Prep</span>
+                        
+                        <!-- After State (Bridal Makeup) -->
+                        <div class="before-after-img img-after" id="ba-after-img" style="background-image: url('images/bridal-service.png');"></div>
+                        <span class="slider-label label-after">Bridal Couture</span>
+                        
+                        <!-- Drag bar -->
+                        <div class="before-after-slider-bar" id="ba-slider-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridal Packages Menu -->
+    <section class="section-padding" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="eyebrow text-center">Exquisite Rituals</span>
+            <h2>Bridal & Engagement Packages</h2>
+            
+            <div class="grid-3">
+                <!-- Roka & Engagement -->
+                <div class="bridal-pkg-card reveal">
+                    <span class="eyebrow">Pre-Wedding Glam</span>
+                    <h3>The Royal Engagement</h3>
+                    <div class="bridal-pkg-price">₹18,000</div>
+                    <ul class="bridal-pkg-features">
+                        <li>HD Celebrity Makeup application</li>
+                        <li>Luxury hair sculpting & draping</li>
+                        <li>Premium fake eyelashes & contouring</li>
+                        <li>Saree or lehenga draping</li>
+                        <li>Nail prep file & basic polish</li>
+                    </ul>
+                    <button class="btn btn-outline open-booking-btn" style="width: 100%;">Book Package</button>
+                </div>
+
+                <!-- Signature Wedding Package -->
+                <div class="bridal-pkg-card reveal delay-1" style="border-color: var(--color-primary); background: linear-gradient(180deg, #141414 0%, #080808 100%);">
+                    <span class="eyebrow">The Ultimate Day</span>
+                    <h3>Royal HD Bridal Luxe</h3>
+                    <div class="bridal-pkg-price">₹35,000</div>
+                    <ul class="bridal-pkg-features">
+                        <li>Neha Aneja's private makeup session</li>
+                        <li>Airbrush/HD Waterproof cosmetic application</li>
+                        <li>Custom premium lashes & contouring</li>
+                        <li>Elaborate bridal hair sculpting</li>
+                        <li>Dupatta & heavy jewelry styling/draping</li>
+                        <li>Complimentary pre-wedding makeup trial</li>
+                    </ul>
+                    <button class="btn btn-gold-solid open-booking-btn" style="width: 100%;">Book Package</button>
+                </div>
+
+                <!-- Pre-Bridal Care package -->
+                <div class="bridal-pkg-card reveal delay-2">
+                    <span class="eyebrow">Skin & Hair Prep</span>
+                    <h3>Imperial Pre-Bridal Ritual</h3>
+                    <div class="bridal-pkg-price">₹22,000</div>
+                    <ul class="bridal-pkg-features">
+                        <li>3 Advanced Hydra-Dermabrasion facials</li>
+                        <li>Kérastase Caviar hair spa & nourishing wash</li>
+                        <li>Full-body Rica wax & organic polishing scrub</li>
+                        <li>De-tan skin pack treatments</li>
+                        <li>Luxury Mani-Pedi combo with Gel extensions</li>
+                    </ul>
+                    <button class="btn btn-outline open-booking-btn" style="width: 100%;">Book Package</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+    <section class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            <div class="reveal">
+                <span class="eyebrow text-center">Personalized Consultation</span>
+                <h2 style="margin-bottom: 1rem;">Bridal Consultation Form</h2>
+                <p class="text-center" style="margin-bottom: 3rem;">Submit details of your wedding schedule, and our chief bridal consultant will reach out with a custom quote and consultation availability.</p>
+                
+                <form id="bridal-consultation-form" style="background-color: var(--color-bg-card); border: 1px solid var(--color-border); padding: 3rem; border-radius: var(--border-radius-md);">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-name">Bride's Name</label>
+                            <input type="text" id="b-name" class="form-control" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-phone">Phone Number</label>
+                            <input type="tel" id="b-phone" class="form-control" placeholder="Your phone number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-date">Wedding Date</label>
+                            <input type="date" id="b-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-venue">Wedding Venue / City</label>
+                            <input type="text" id="b-venue" class="form-control" placeholder="e.g., Gurgaon Hotel or Residence" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="b-package">Desired Bridal Package</label>
+                            <select id="b-package" class="form-control" required>
+                                <option value="Royal HD Bridal Luxe">Royal HD Bridal Luxe (₹35,000)</option>
+                                <option value="Royal Engagement Package">Royal Engagement Package (₹18,000)</option>
+                                <option value="Imperial Pre-Bridal Ritual">Imperial Pre-Bridal Ritual (₹22,000)</option>
+                                <option value="Custom Multi-Day Booking">Custom Multi-Day Booking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-guests">Guest/Sider Makeups Needed</label>
+                            <select id="b-guests" class="form-control" required>
+                                <option value="None">None</option>
+                                <option value="1-3 Guests">1-3 Guests</option>
+                                <option value="4-6 Guests">4-6 Guests</option>
+                                <option value="7+ Guests">7+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="b-style">Preferred Makeup style</label>
+                        <select id="b-style" class="form-control" required>
+                            <option value="Classic Royal & Traditional">Classic Royal & Traditional</option>
+                            <option value="Dewy Modern & Minimalist">Dewy Modern & Minimalist</option>
+                            <option value="Glamorous HD & Dramatic">Glamorous HD & Dramatic</option>
+                            <option value="Undecided (Consultation Trial Required)">Undecided (Consultation Trial Required)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="b-notes">Additional styling details</label>
+                        <textarea id="b-notes" class="form-control" rows="4" placeholder="Tell us about your outfit style, jewelry, or any skin sensitivity concerns..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold-solid" style="width: 100%;">Submit Consultation Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Before/After Slider Action Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('ba-slider');
+            const sliderBar = document.getElementById('ba-slider-bar');
+            const afterImg = document.getElementById('ba-after-img');
+            
+            if (slider && sliderBar && afterImg) {
+                let isDragging = false;
+
+                const updateSliderPosition = (clientX) => {
+                    const rect = slider.getBoundingClientRect();
+                    let x = clientX - rect.left;
+                    
+                    // Clamp boundaries
+                    if (x < 0) x = 0;
+                    if (x > rect.width) x = rect.width;
+                    
+                    const pct = (x / rect.width) * 100;
+                    
+                    // Update slide bar
+                    sliderBar.style.left = `${pct}%`;
+                    
+                    // Update image clip-path (curtain effect)
+                    afterImg.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+                };
+
+                // Mouse events
+                slider.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    updateSliderPosition(e.clientX);
+                });
+
+                window.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    updateSliderPosition(e.clientX);
+                });
+
+                // Touch events
+                slider.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    updateSliderPosition(e.touches[0].clientX);
+                });
+
+                window.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+
+                window.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    updateSliderPosition(e.touches[0].clientX);
+                });
+            }
+
+            // Bridal Form Submission
+            const bridalForm = document.getElementById('bridal-consultation-form');
+            if (bridalForm) {
+                bridalForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('b-name').value;
+                    const phone = document.getElementById('b-phone').value;
+                    const date = document.getElementById('b-date').value;
+                    const venue = document.getElementById('b-venue').value;
+                    const packageSelected = document.getElementById('b-package').value;
+                    const guests = document.getElementById('b-guests').value;
+                    const style = document.getElementById('b-style').value;
+                    const notes = document.getElementById('b-notes').value;
+
+                    const baseMsg = `Hello Opulence Bridal Studio! I would like to request a bridal consultation.
+                    
+*Details:*
+- *Bride:* ${name}
+- *Phone:* ${phone}
+- *Wedding Date:* ${date}
+- *Venue:* ${venue}
+- *Desired Package:* ${packageSelected}
+- *Guest Makeup:* ${guests}
+- *Preferred Style:* ${style}
+- *Styling Details:* ${notes || 'None'}`;
+
+                    const encodedMsg = encodeURIComponent(baseMsg);
+                    const waLink = `https://wa.me/919811630659?text=${encodedMsg}`;
+                    
+                    alert('Thank you! Redirecting to WhatsApp to send your bridal consultation details to Neha Aneja.');
+                    window.open(waLink, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

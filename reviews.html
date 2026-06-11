@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews & Ratings | Opulence Luxury Unisex Salon Gurgaon</title>
+    <meta name="description" content="Read reviews from clients of Opulence Luxury Unisex Salon. Verified ratings for Neha Aneja's bridal makeup, haircuts, and facials at Satya The Hive Mall.">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('opulence-theme') || 'dark');
+    </script>
+    
+    <style>
+        .reviews-banner {
+            padding: 120px 0 60px 0;
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .reviews-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Rating metrics display */
+        .rating-summary-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .rating-huge {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-stars-huge {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Review Feed grid */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .review-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-sm);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .review-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .review-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-card-stars {
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+
+        .review-card-tag {
+            font-size: 0.7rem;
+            background-color: rgba(197, 160, 89, 0.1);
+            color: var(--color-primary);
+            padding: 3px 10px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .review-card-body {
+            font-family: var(--font-subheading);
+            font-style: italic;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .review-card-author {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .review-card-author::before {
+            content: '';
+            width: 15px;
+            height: 1px;
+            background-color: var(--color-primary);
+            display: inline-block;
+        }
+
+        /* Review submission layout */
+        .write-review-box {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            border-radius: var(--border-radius-md);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Star selector */
+        .rating-selector {
+            display: flex;
+            gap: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .star-opt {
+            cursor: pointer;
+            color: var(--color-border);
+            transition: var(--transition-quick);
+        }
+
+        .star-opt.active {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .write-review-box {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Loader Screen -->
+    <div id="loader-container"></div>
+
+    <!-- Header Navigation -->
+    <header id="site-header"></header>
+
+    <!-- Banner -->
+    <section class="reviews-banner">
+        <div class="container">
+            <span class="eyebrow">Exquisite Testimonials</span>
+            <h1>The Voice of Opulence</h1>
+            <p>Read authentic experiences shared by guests of Sector 102 & Sector 109, Gurgaon.</p>
+        </div>
+    </section>
+
+    <!-- Rating Summary -->
+    <section class="section-padding" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="rating-summary-card reveal">
+                <div class="rating-huge">4.8</div>
+                <div class="rating-stars-huge">★★★★★</div>
+                <h3 style="margin-bottom: 0.5rem;">Verified Google Business Rating</h3>
+                <p>Based on over 1,200+ customer reviews submitted for our Gurgaon locations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="reviews-grid" id="reviews-feed">
+                <!-- Injected dynamically by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Review Form -->
+    <section class="section-padding" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="write-review-box reveal">
+                <span class="eyebrow text-center">Your Thoughts</span>
+                <h2 style="margin-bottom: 1rem;">Share Your Experience</h2>
+                <p class="text-center" style="margin-bottom: 2.5rem; color: var(--color-text-muted);">Your feedback drives our standard of perfection. We would love to hear your thoughts.</p>
+                
+                <form id="add-review-form">
+                    <div class="rating-selector" id="star-selector">
+                        <span class="star-opt active" data-rating="1">★</span>
+                        <span class="star-opt active" data-rating="2">★</span>
+                        <span class="star-opt active" data-rating="3">★</span>
+                        <span class="star-opt active" data-rating="4">★</span>
+                        <span class="star-opt active" data-rating="5">★</span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rev-name">Full Name</label>
+                            <input type="text" id="rev-name" class="form-control" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rev-tag">Service Received</label>
+                            <select id="rev-tag" class="form-control" required>
+                                <option value="Hair Couture">Hair Couture</option>
+                                <option value="Advanced Skincare">Advanced Skincare</option>
+                                <option value="Bridal Luxe">Bridal Luxe</option>
+                                <option value="Nail Artistry">Nail Artistry</option>
+                                <option value="Gentlemen's Grooming">Gentlemen's Grooming</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rev-text">Your Review</label>
+                        <textarea id="rev-text" class="form-control" rows="4" placeholder="How was your pampering experience..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-gold-solid" style="width: 100%;">Post Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Booking Modal Container -->
+    <div id="booking-modal-container"></div>
+
+    <!-- Floating Widgets -->
+    <div id="floating-widgets-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Dynamic Reviews Engine Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Static Default Reviews (matching business context)
+            const defaultReviews = [
+                {
+                    name: "Priya Sharma",
+                    tag: "Hair Couture",
+                    stars: 5,
+                    text: "Opulence is hands down the best luxury salon in Sector 102 Gurgaon. The Balayage hair coloring done by Amit Aneja completely transformed my look. Absolutely love the champagne service!"
+                },
+                {
+                    name: "Ananya Mehta",
+                    tag: "Bridal Luxe",
+                    stars: 5,
+                    text: "For my wedding day, I booked their Bridal Luxe Package. Neha Aneja and her stylists created a stunning, natural, and royal look. Truly felt like a queen. Highly recommend their bridal studio!"
+                },
+                {
+                    name: "Rahul Kapoor",
+                    tag: "Gentlemen's Grooming",
+                    stars: 5,
+                    text: "Extremely clean, modern interiors, and professional staff. I visited for a hair wash, beard sculpture, and charcoal facial. The hot towel service is highly relaxing."
+                },
+                {
+                    name: "Simran Kaur",
+                    tag: "Advanced Skincare",
+                    stars: 5,
+                    text: "I have been visiting Simran for HydraFacial treatments. The skin hydration levels and texture improvements are visible. The salon is hygienic and very luxurious."
+                },
+                {
+                    name: "Meera Oberoi",
+                    tag: "Nail Artistry",
+                    stars: 4,
+                    text: "Highly professional nail tech team. Got acrylic extensions done with chrome art for my engagement function. Excellent finish, and very durable."
+                },
+                {
+                    name: "Kabir Dev",
+                    tag: "Hair Couture",
+                    stars: 5,
+                    text: "Amit Aneja is a master hair stylist. He gave me a custom fade cut that perfectly contours my face. The tea selection and consultation are top class."
+                }
+            ];
+
+            const reviewsFeed = document.getElementById('reviews-feed');
+            const reviewForm = document.getElementById('add-review-form');
+            const starSelector = document.getElementById('star-selector');
+            let selectedRating = 5;
+
+            // Load and Render Reviews
+            const getReviews = () => {
+                const local = localStorage.getItem('opulence-user-reviews');
+                if (local) {
+                    const parsed = JSON.parse(local);
+                    return [...parsed, ...defaultReviews];
+                }
+                return defaultReviews;
+            };
+
+            const renderReviews = () => {
+                if (!reviewsFeed) return;
+                reviewsFeed.innerHTML = '';
+                
+                const list = getReviews();
+                list.forEach((rev, index) => {
+                    const starsStr = '★'.repeat(rev.stars) + '☆'.repeat(5 - rev.stars);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'review-card reveal';
+                    // Delay calculations
+                    const delayClass = index % 2 === 1 ? 'delay-1' : '';
+                    if (delayClass) card.classList.add(delayClass);
+                    
+                    card.innerHTML = `
+                        <div>
+                            <div class="review-card-header">
+                                <div class="review-card-stars">${starsStr}</div>
+                                <span class="review-card-tag">${rev.tag}</span>
+                            </div>
+                            <div class="review-card-body">"${rev.text}"</div>
+                        </div>
+                        <div class="review-card-author">${rev.name}</div>
+                    `;
+                    reviewsFeed.appendChild(card);
+                });
+                
+                // Active Scroll reveals
+                if (window.refreshScrollReveals) window.refreshScrollReveals();
+            };
+
+            // Star Selector interaction
+            if (starSelector) {
+                const stars = starSelector.querySelectorAll('.star-opt');
+                stars.forEach(star => {
+                    star.addEventListener('click', () => {
+                        const val = parseInt(star.getAttribute('data-rating'));
+                        selectedRating = val;
+                        
+                        // Paint stars
+                        stars.forEach((s, idx) => {
+                            if (idx < val) {
+                                s.classList.add('active');
+                            } else {
+                                s.classList.remove('active');
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Form Submit Logic
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('rev-name').value;
+                    const tag = document.getElementById('rev-tag').value;
+                    const text = document.getElementById('rev-text').value;
+
+                    const newReview = {
+                        name: name,
+                        tag: tag,
+                        stars: selectedRating,
+                        text: text
+                    };
+
+                    // Save to local
+                    const currentLocal = localStorage.getItem('opulence-user-reviews');
+                    let list = [];
+                    if (currentLocal) {
+                        list = JSON.parse(currentLocal);
+                    }
+                    list.unshift(newReview); // Put newest review at top
+                    localStorage.setItem('opulence-user-reviews', JSON.stringify(list));
+
+                    // Reset Form
+                    reviewForm.reset();
+                    selectedRating = 5;
+                    const stars = starSelector.querySelectorAll('.star-opt');
+                    stars.forEach(s => s.classList.add('active'));
+
+                    // Alert & Rerender
+                    alert('Thank you! Your verified review has been uploaded to the salon feed.');
+                    renderReviews();
+                });
+            }
+
+            renderReviews();
+        });
+    </script>
+</body>
+</html>
+
+
